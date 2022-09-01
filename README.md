@@ -25,7 +25,7 @@ the following command runs 3 steps
 2. Generate mask predictions
 3. Generate action predictions from predicted masks in **_2._** 
 
-**NOTE**: Replace the **PATH_ROOT_DATA_DIR** to your path, and put the video dirs into **test** dir. 
+**NOTE**: Replace the **PATH_ROOT_DATA_DIR** with your path, and put the video dirs into **test** dir. 
 
 The predictions will be in **pred** dir.
 
@@ -59,15 +59,15 @@ PATH_ROOT_DATA_DIR
 
 ```bash
 docker container run --rm --gpus=all --user=1000:1000 \
--v PATH_ROOT_DATA_DIR:/data/ \
-taipingeric/miccai2022 \
-python AIA-Noobs/inference.py \
---data_dir ../../data/test \
---seg_config ckpt_cfg/20220820-1844.yaml \
---seg_ckpt ckpt_cfg/20220820-1844-best.pth \
---act_config ckpt_cfg/20220824-0538.yaml \
---act_ckpt ckpt_cfg/20220824-0538.pth \
---sample_video --pred_act --pred_seg --tta \
+        -v PATH_ROOT_DATA_DIR:/data/ \
+        taipingeric/miccai2022 \
+        python AIA-Noobs/inference.py \
+        --data_dir ../../data/test \
+        --seg_config ckpt_cfg/20220820-1844.yaml \
+        --seg_ckpt ckpt_cfg/20220820-1844-best.pth \
+        --act_config ckpt_cfg/20220824-0538.yaml \
+        --act_ckpt ckpt_cfg/20220824-0538.pth \
+        --sample_video --pred_act --pred_seg --tta \
 ```
 
 
