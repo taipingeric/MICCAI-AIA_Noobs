@@ -1,0 +1,12 @@
+data:
+    root_dir: '../../../MICCAI_raw'
+    train_csv: './data_files/train.csv'
+    val_csv: './data_files/val.csv'
+
+    root_act_dir: '../../../MICCAI_raw'
+
+model_dir: "../miccai_ckpt"
+config_dir: "../miccai_config"
+gpu: 1
+pin_memory: False
+bs: 3

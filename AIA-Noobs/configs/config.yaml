@@ -1,0 +1,95 @@
+epochs: 400
+verbose: True # False: now showing batch progress bar
+img_h: 480 #1080
+img_w: 640 # 1920
+num_cls: 10 # segmentation class
+aug: True
+
+# optimizer
+optm_type: ranger21 # ranger21, adam, sgd
+ranger21:
+  lr: 0.001 # learning rate
+  momentum: 1e-9
+
+# adam:
+#   lr: 1e-3 # learning rate
+# sgd:
+#   lr: 1e-3 # learning rate
+#   momentum: 1e-9
+loss: 'addmargin' #ce dice dice+ce addmargin
+aux: False # auxiliary output for deep suervision training
+
+# ckpt
+last: '-last.pth'
+best: '-best.pth' # best model suffix
+
+
+model_type: smp # smp, UNet
+smp:
+  # encoder list: https://smp.readthedocs.io/en/latest/encoders.html#
+  seg_encoder_weights: True
+  encoder_name: tu-tf_efficientnet_b4_ns #timm-efficientnet-b2 # timm-efficientnet-b4
+  freeze_encoder: True
+  # segmentation model list: https://smp.readthedocs.io/en/latest/models.html#id9
+  seg_name: UnetPlusPlusCosSim #UnetPlusPlusCosSim DeepLabV3Plus, UnetPlusPlus, MAnet, PAN, MAnet, DeepLabV3, PSPNet
+#   norm: 'gn'
+  pretrained: True
+  cgm: False
+# UNet:
+#     encoder_type: 'basic' # cspdarknet53 , cspresnet50, basic, UNet2plusEncoder
+#     init_dim: 16  # 32
+#     norm: "gn"
+#     block: 'elan' #encoder block 'csp', 'basic', elan
+#     stages: 4
+#     decoder_type: 'yolov7' # basic, transformer, UNet2plusDecoder, yolov7
+#     head_type: 'basic' # basic, identity
+#     pool_type: 'yolov7' # basic, yolov7
+#     up_type: 'basic' # yolov7
+#     encoder:
+#       pretrained: True
+#       freeze: False
+#     path:
+#       cbam: True
+# #    decoder:
+# #      transformer:
+# #        patch_size: 16 # 32
+# #        out_dim: 256 # 512
+# #        depth: 1 # 6
+# #        heads: 4 # 16
+# #        dim_head: 32 # 64
+# #        mlp_dim: 512 # 2048
+#     head:
+#         num_cls: 10
+#         k_size: 1
+#     cgm: False
+        
+data:
+    root_dir: '../seg_only'
+    action_root_dor: './action_gt'
+    train_csv: './data_files/train.csv'
+    val_csv: './data_files/val.csv'
+    
+vignetting_calibration: False
+vignetting_path: "./vignetting_uint8.npy"
+
+# wandb
+project: "miccai2022"
+project_action: 'action'
+
+entity: "aia-noobs"
+
+
+config_dir: '../miccai_config'
+model_dir: '../miccai_ckpt'
+
+# Action
+action_encoder: resnet18 # mnasnet0_5, resnet50, convnext_small, resnet18, efficientnet_v2_s
+encoder_cout: 512
+# mobilenetv3: 576, Eff B3: 384 B2: 352,
+# resnet18: 512, resnet50: 2048
+# convnext_small 768
+# efficientnet_v2_s: 1280
+# mnasnet0_5: 1280
+
+#seq_len: 10 # number of frames for action classification
+#overlapping: False # overlapping action frame sequence

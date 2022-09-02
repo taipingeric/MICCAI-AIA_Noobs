@@ -1,0 +1,13 @@
+data:
+    root_dir: '..' # root dir for segmentation
+    train_csv: './data_files/train.csv'
+    val_csv: './data_files/val.csv'
+
+    root_act_dir: '../action_gt' # root dir for action gt only
+
+model_dir: "../miccai_ckpt"
+config_dir: "../miccai_config"
+gpu: 4
+pin_memory: False
+bs: 3
+

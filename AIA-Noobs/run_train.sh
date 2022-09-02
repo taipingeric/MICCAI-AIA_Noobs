@@ -1,0 +1,1 @@
+python train.py --config './configs/config.yaml' --config_workspace './configs/config_aia.yaml' --workers 2 --bs 4
