@@ -25,7 +25,7 @@ the following command runs 3 steps
 2. Generate mask predictions
 3. Generate action predictions from predicted masks in **_2._** 
 
-**NOTE**: Replace the **PATH_ROOT_DATA_DIR** with your path, and put the video dirs into **test** dir. 
+**NOTE**: Replace the **PATH_ROOT_DATA_DIR** with your path, and put the video dirs into **PATH_ROOT_DATA_DIR/test** dir. 
 
 The predictions will be in **pred** dir.
 
